@@ -1,5 +1,5 @@
 window.onload=function(){
-    //BRAWLERS
+    //LISTA DE BRAWLERS
     const brawlers = [
         { id: 16000000, name: 'Shelly' },
         { id: 16000001, name: 'Colt' },
@@ -45,7 +45,7 @@ window.onload=function(){
         select.appendChild(option);
     });
 
-   //PETICION
+   //PETICION A API
    document.getElementById("btnPeticion").addEventListener("click", () => {
     const brawlerId = document.getElementById("brawlers").value;
     fetch(`https://api.brawlify.com/v1/brawlers/${brawlerId}`)

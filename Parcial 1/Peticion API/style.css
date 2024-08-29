@@ -27,6 +27,7 @@ body {
 }
 
 .imagenbrawler {
+    padding-top: 20px;
     width: 250px;
     height: 250px;
     display: flex;
@@ -43,5 +44,5 @@ body {
 
 .nombrebrawler {
 	text-align: center;
-	padding-top: 25px;
+	padding-top: 30px;
 }
