@@ -2,12 +2,8 @@
 
 **¿Que son las habilidades blandas?**
 
-<div style="text-align: center;">
-
 ![Habilidades blandas.](https://th.bing.com/th/id/OIP.LXMqGkudPtay08-53pIXEwHaFt?rs=1&pid=ImgDetMain
 "Habilidades blandas.")
-
-</div>
 
 Las *habilidades blandas* o tambien conocidas como soft skills, son rasgos de cáracter y competencias interpersonales que caracterizan la forma de interactuar y relacionarse de una persona con otras. Es decir, están más vinculadas con el comportamiento y la forma de ser de un individuo que con sus conocimientos.
 El objetivo de las habilidades blandas es desarrollar la personalidad, funcionando como herramientas que permiten mejorar las habilidades comunicativas, el trabajo en equipo, la toma de liderazgo y gestión del tiempo, entre otras.
