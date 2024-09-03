@@ -1,10 +1,10 @@
 // SERVIDOR
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const app = express();
 
 // FUNCIONES DEL SERVIDOR
-app.use(cors());
+//app.use(cors());
 
 app.get('/',(req,res) => {
     res.send('Server express contestando a peticion get')

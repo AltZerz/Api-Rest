@@ -10,10 +10,15 @@
 <body>
     <h2 class="titulo">Prueba de cors</h2>
     <div class="peticion">
-        <button id="btnPeticion" class="btn btn-warning">Probar</button>
+        <button id="btnPeticion" class="btn btn-warning">Peticion</button>
     </div>
 
-    <div id="content" class="content"></div>
+    <div class="peticion">
+        <form target="resultado" method="GET" action="http://localhost:3000" type="submit">
+            <button id="btnPeticionForm" class="btn btn-warning">Peticion con form</button>
+        </form>
+        <iframe name="resultado"></iframe>
+    </div> 
 
     <script src="script.js"></script>
 </body>
