@@ -17,23 +17,24 @@ app.use(cors());
 
 app.use(express.json());
 
-
 app.listen(3000,(req,res)=>{
     console.log('Server express escuchando en puerto 3000')
 });
 
-//? CONSULTAS
-app.get('/', (req, res) => {
+//*FUNCIONES CON LA BASE DE DATOS
+//? CONSULTA A LA BASE DE DATOS
+app.get('/clientes', (req, res, next) => {
     console.log(req.query.ID_PELICULA);
     let consulta = ''
-    if (typeof (req.query.ID_PELICULA) == 'undefined') {
+    if (typeof(req.query.ID_PELICULA) === 'undefined') {
         consulta = `select * from PELICULA`
     } else {
         consulta = `select * from PELICULA where ID_PELICULA=${req.query.ID_PELICULA}`
     }
-    connection.query(
-        consulta,
-        function (err, results, fields) {
+    connection.query(consulta, function (err, results, fields) {
+            if (err) {
+                res.json(err);
+            }
             if (results.length == 0) {
                 res.json({ mensaje: "Lo sentimos, esta pelicula no registrada por el momento." });
             }
@@ -43,6 +44,13 @@ app.get('/', (req, res) => {
         }
     );
 });
+
+//? ALTA DE UN REGISTRO
+
+
+//? BAJA DE UN REGISTRO
+
+
 
 /*
 app.get('/clientes',cors(),(req,res) => {
