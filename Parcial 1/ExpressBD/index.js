@@ -22,20 +22,22 @@ app.listen(3000,(req,res)=>{
 });
 
 //*FUNCIONES CON LA BASE DE DATOS
-//? CONSULTA A LA BASE DE DATOS
-app.get('/clientes', (req, res, next) => {
+//? CONSULTA A LA TABLA DE PELICULAS
+app.get('/peliculas', (req, res, next) => {
     let consulta = ''
+    
     if (typeof(req.query.ID_PELICULA) === 'undefined') {
         consulta = `select * from PELICULA`
     } else {
         consulta = `select * from PELICULA where ID_PELICULA=${req.query.ID_PELICULA}`
     }
+    
     connection.query(consulta, function (err, results, fields) {
             if (err) {
                 res.json(err);
             }
             if (results.length == 0) {
-                res.json({ mensaje: "Lo sentimos, esta pelicula no registrada por el momento." });
+                res.json({ mensaje: "Lo sentimos, no se encuentra ninguna pelicula con esta ID registrada." });
             }
             else {
                 res.json(results);
@@ -44,62 +46,71 @@ app.get('/clientes', (req, res, next) => {
     );
 });
 
-//? ALTA DE UN REGISTRO
-app.post('/clientes', (req, res) => {
-    let consulta = ''
-    if (typeof (req.query.TITULO) == 'undefined' || typeof (req.query.FECHA_LANZAMIENTO) == 'undefined' || typeof (req.query.CAST) == 'undefined' || typeof (req.query.DIRECTOR) == 'undefined' || typeof (req.query.PRODUCTORA) == 'undefined') {
-        res.json({
-            mensaje: "Completa todos los campos por favor.",
+//? ALTA DE UNA PELICULA
+app.post('/peliculas', (req, res) => {
+    const { TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA } = req.body;
+
+    if (!TITULO || !FECHA_LANZAMIENTO || !CAST || !DIRECTOR || !PRODUCTORA) {
+        console.log("Faltan datos: ", { TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA });
+        return res.status(400).json({
+            status: 0,
+            mensaje: "Completa todos los datos por favor."
         });
     }
-    else {
-        consulta = `INSERT INTO PELICULA (TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA) VALUES ('${req.query.TITULO}', '${req.query.FECHA_LANZAMIENTO}', '${req.query.CAST}', '${req.query.DIRECTOR}', '${req.query.PRODUCTORA}')`;
-        connection.query(
-            consulta,
-            function (err, results, fields) {
-                if (results && results.affectedRows == 1) {
-                    res.json({
-                        mensaje: "Pelicula agregada exitosamente.",
-                    });
-                } else {
-                    res.json({
-                        mensaje: "Hubo un error al agregar la pelicula, por favor intenta de nuevo.",
-                    });
-                }
-            }
-        )
-    }
+
+    const consulta = `INSERT INTO PELICULA (TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA) VALUES (?,?,?,?,?)`;
+
+    connection.query(consulta, [TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA], (err, results) => {
+        if (err) {
+            return res.status(500).json({
+                status: 0,
+                mensaje: "Hubo un error al insertar en la base de datos.",
+                error: err
+            });
+        }
+
+        res.json({
+            status: 1,
+            mensaje: "Película AGREGADA exitosamente."
+        });
+    });
 });
 
-//? BAJA DE UN REGISTRO
-app.delete('/clientes', (req, res) => {
-    let consulta = ''
-    if (typeof (req.query.ID) == 'undefined') {
-        res.json({
-            mensaje: "Ingresa el ID de la pelicula que deseas eliminar por favor.",
+
+//? BAJA DE UNA PELICULA
+app.delete('/peliculas', (req, res) => {
+    const consulta = `DELETE FROM PELICULA WHERE ID_PELICULA = ?`;
+    const { ID_PELICULA } = req.query;
+    
+    if (!ID_PELICULA) {
+        return res.status(400).json({
+            status: 0,
+            mensaje: "No ingresaste el ID de la película que quieres eliminar."
         });
     }
-    else {
-        consulta = `DELETE FROM PELICULA WHERE ID_PELICULA = ${req.query.ID}`;
-    }
-    connection.query(
-        consulta,
-        function (err, results, fields) {
-            console.log(results);
-            if (results.affectedRows == 1) {
-                res.json({
-                    mensaje: "Pelicula eliminada de la base de datos exitosamente.",
-                });
-            }
-            else {
-                res.json({
-                    status: 0,
-                    mensaje: "Una pelicula con este ID no se encuentra registrada, intenta con otro ID por favor.",
-                    datos: {}
-                });
-            }
+
+    connection.query(consulta, [ID_PELICULA], (err, results) => {
+        if (err) {
+            return res.status(500).json({
+                status: 0,
+                mensaje: "Hubo un error al eliminar la película.",
+                error: err
+            });
         }
-    )
+
+        if (results.affectedRows === 0) {
+            return res.json({
+                status: 0,
+                mensaje: "La película con el ID que ingresaste no se encuentra registrada, intenta con otro ID",
+                datos: {}
+            });
+        } else {
+            return res.json({
+                status: 1,
+                mensaje: "Película ELIMINADA exitosamente."
+            });
+        }
+    });
 });
 
 
