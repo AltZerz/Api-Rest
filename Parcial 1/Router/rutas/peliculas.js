@@ -1,29 +1,19 @@
-//* SERVIDOR
 const express = require('express');
-const cors = require('cors');
 const mysql2 = require('mysql2');
+
 const app = express();
+const router = express.Router();
 
 //* CONEXION A LA BASE DE DATOS
 const connection = mysql2.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123',
+    password: '123', 
     database: 'WEB'
 });
 
-//* FUNCIONES DEL SERVIDOR
-app.use(cors());
-
-app.use(express.json());
-
-app.listen(3000,(req,res)=>{
-    console.log('Server express escuchando en puerto 3000')
-});
-
-//*FUNCIONES CON LA BASE DE DATOS
 //? CONSULTA A LA TABLA DE PELICULAS
-app.get('/peliculas', (req, res, next) => {
+router.get('/', (req, res, next) => {
     let consulta = ''
     
     if (typeof(req.query.ID_PELICULA) === 'undefined') {
@@ -47,7 +37,7 @@ app.get('/peliculas', (req, res, next) => {
 });
 
 //? ALTA DE UNA PELICULA
-app.post('/peliculas', (req, res) => {
+router.post('/', (req, res) => {
     const { TITULO, FECHA_LANZAMIENTO, CAST, DIRECTOR, PRODUCTORA } = req.body;
 
     if (!TITULO || !FECHA_LANZAMIENTO || !CAST || !DIRECTOR || !PRODUCTORA) {
@@ -78,7 +68,7 @@ app.post('/peliculas', (req, res) => {
 
 
 //? BAJA DE UNA PELICULA
-app.delete('/peliculas', (req, res) => {
+router.delete('/', (req, res) => {
     const consulta = `DELETE FROM PELICULA WHERE ID_PELICULA = ?`;
     const { ID_PELICULA } = req.query;
     
@@ -113,20 +103,4 @@ app.delete('/peliculas', (req, res) => {
     });
 });
 
-
-/*
-app.get('/clientes',cors(),(req,res) => {
-    console.log(req.params);
-    res.json({mensaje: 'Server express escuchando peticion get'});
-});
-
-app.post('/clientes',(req,res) => {
-    console.log(req.query);
-    res.json({mensaje: 'Server express escuchando peticion post'});
-});
-
-app.put('/clientes',(req,res) => {
-    console.log(req.body);
-    res.json({mensaje: 'Server express escuchando peticion put'});
-});
-*/
+module.exports.router=router;
