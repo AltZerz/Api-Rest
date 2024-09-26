@@ -20,7 +20,7 @@ app.get('/download',(req,res) => {
 app.get('/attachment',(req,res) => {
     let archivo = path.join(__dirname, './imagenes/gato.jpg')
     res.attachment(archivo);
-    res.end('texto');
+    res.sendFile(archivo);
 });
 
 /*
