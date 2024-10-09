@@ -1,0 +1,23 @@
+/**
+ * Funcion que toma dos numeros como parametros y devuelve el resultado de la suma de ambos numeros.
+ * @param {number} a Primer numero que se va a sumar
+ * @param {number} b Segundo numero que se va a sumar
+ * @returns {number} El resultado de la suma de los dos numeros
+ */
+function sumar(a, b) {
+    return a + b;
+}
+
+/**
+ * Funcion que toma dos numeros como parametros y devuelve el resultado de la resta de ambos numeros.
+ * @param {number} a Primer numero que se va a restar
+ * @param {number} b Segundo numero que se va a restar
+ * @returns {number} El resultado de la resta de los dos numeros
+ */
+function restar(a, b) {
+    return a - b;
+}
+
+// Exportacion de la funcion
+module.exports = sumar;
+module.exports = restar;
