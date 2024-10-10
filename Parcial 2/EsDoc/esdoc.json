@@ -1,0 +1,10 @@
+{
+    "source": "./",       
+    "destination": "./docs", 
+    "includes": [
+        "modulo.js"                       
+    ],
+    "plugins": [
+        {"name": "esdoc-standard-plugin"} 
+    ]
+}

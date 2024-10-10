@@ -1,0 +1,125 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "EsDoc/modulo.js",
+    "content": "/**\r\n * Funcion que toma dos numeros como parametros y devuelve el resultado de la suma de ambos numeros.\r\n * @param {number} a Primer numero que se va a sumar\r\n * @param {number} b Segundo numero que se va a sumar\r\n * @returns {number} El resultado de la suma de los dos numeros\r\n */\r\nexport function sumar(a, b) {\r\n    return a + b;\r\n}\r\n\r\n/**\r\n * Funcion que toma dos numeros como parametros y devuelve el resultado de la resta de ambos numeros.\r\n * @param {number} a Primer numero que se va a restar\r\n * @param {number} b Segundo numero que se va a restar\r\n * @returns {number} El resultado de la resta de los dos numeros\r\n */\r\nexport function restar(a, b) {\r\n    return a - b;\r\n}\r\n",
+    "static": true,
+    "longname": "C:/wamp64/www/Api-Rest/Parcial 2/EsDoc/modulo.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "function",
+    "name": "sumar",
+    "memberof": "EsDoc/modulo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "EsDoc/modulo.js~sumar",
+    "access": "public",
+    "export": true,
+    "importPath": "esdoc/EsDoc/modulo.js",
+    "importStyle": "{sumar}",
+    "description": "Funcion que toma dos numeros como parametros y devuelve el resultado de la suma de ambos numeros.",
+    "lineNumber": 7,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{number} El resultado de la suma de los dos numeros"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "Primer numero que se va a sumar"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "Segundo numero que se va a sumar"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "El resultado de la suma de los dos numeros"
+    }
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "name": "restar",
+    "memberof": "EsDoc/modulo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "EsDoc/modulo.js~restar",
+    "access": "public",
+    "export": true,
+    "importPath": "esdoc/EsDoc/modulo.js",
+    "importStyle": "{restar}",
+    "description": "Funcion que toma dos numeros como parametros y devuelve el resultado de la resta de ambos numeros.",
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{number} El resultado de la resta de los dos numeros"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "a",
+        "description": "Primer numero que se va a restar"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "b",
+        "description": "Segundo numero que se va a restar"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "El resultado de la resta de los dos numeros"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "",
+    "longname": "C:\\wamp64\\www\\Api-Rest\\Parcial 2\\EsDoc\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  }
+]
