@@ -1,0 +1,11 @@
+{
+    "source": {
+        "include": ["./src"],
+        "includePattern": ".+\\.js(doc|x)?$"
+    },
+    "plugins": [],
+    "opts": {
+        "destination": "docs/",
+        "template": "node_modules/prismarine-jsdoc-theme"
+    }
+}
