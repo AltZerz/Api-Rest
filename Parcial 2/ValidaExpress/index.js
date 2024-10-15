@@ -7,14 +7,17 @@ const app = express();
 // FUNCIONES DEL SERVIDOR
 app.use(cors());
 
-app.get('/', check('ID','Hubo un error en el ID ingresado, se esperaba un numero.').isNumeric(), (req,res) => {
-    const resultError = validationResult(req);
+app.get('/',[ check('ID','Hubo un error en el ID ingresado, se esperaba un numero.').isNumeric(),
+                check('Edad', 'Hubo un error en la edad ingresada, se esperaba un numero.').isNumeric(),
+                check('Correo','Hubo un error en el correo ingresado').isEmail(),
+    ], (req,res) => {
+        const resultError = validationResult(req);
 
-    if (resultError.isEmpty()) {
-        res.json('Respuesta a peticion get')
-    } else {
-        res.json(resultError);
-    }
+        if (resultError.isEmpty()) {
+            res.json('Respuesta a peticion get')
+        } else {
+            res.json(resultError);
+        }
 });
 
 app.post('/',(req,res) => {
