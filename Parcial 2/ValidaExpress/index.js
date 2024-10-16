@@ -7,7 +7,7 @@ const app = express();
 // FUNCIONES DEL SERVIDOR
 app.use(cors());
 
-app.get('/',[ check('ID','Hubo un error en el ID ingresado, se esperaba un numero.').isNumeric(),
+app.get('/', [  check('ID','Hubo un error en el ID ingresado, se esperaba un numero.').isNumeric(),
                 check('Edad', 'Hubo un error en la edad ingresada, se esperaba un numero.').isNumeric(),
                 check('Correo','Hubo un error en el correo ingresado').isEmail(),
     ], (req,res) => {
