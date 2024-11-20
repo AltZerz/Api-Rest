@@ -54,6 +54,10 @@ app.post('/emp', (req, res) => {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
+app.get('/api-spec', (req, res) => {
+    res.json(swaggerDocs);
+});
+
 app.listen(3000, (req, res) => {
     console.log('Server express escuchando en puerto 3000')
 });
